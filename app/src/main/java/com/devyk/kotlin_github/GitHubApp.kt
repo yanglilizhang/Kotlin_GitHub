@@ -16,13 +16,7 @@ import com.devyk.common.App
  *     desc    : This is GitHubApp
  * </pre>
  */
-
-
 class GitHubApp : Application(){
-
-
-
-
     /**
      * 声明一个伴生对象
      */
@@ -49,9 +43,6 @@ class GitHubApp : Application(){
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         //init App 可以获取内部的 Application 级别的 Context
         App.init(this);
-
-
-
     }
 
 
