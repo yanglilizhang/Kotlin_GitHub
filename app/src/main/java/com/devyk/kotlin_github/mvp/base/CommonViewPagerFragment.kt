@@ -2,20 +2,17 @@ package com.devyk.kotlin_github.mvp.base
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bennyhuo.github.network.entities.User
+import com.devyk.kotlin_github.mvp.m.entity.User
 import com.devyk.common.config.UserInfo
-import com.devyk.common.ext.yes
 import com.devyk.kotlin_github.R
 import com.devyk.kotlin_github.mvp.m.AccountManager
 import com.devyk.kotlin_github.mvp.m.OnAccountStateChangeLister
 import com.devyk.kotlin_github.mvp.v.MainActivity
 import org.jetbrains.anko.support.v4.UI
-import org.jetbrains.anko.support.v4._ViewPager
 import org.jetbrains.anko.support.v4.viewPager
 import org.jetbrains.anko.verticalLayout
 

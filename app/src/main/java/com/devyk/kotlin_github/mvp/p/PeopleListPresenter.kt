@@ -1,6 +1,6 @@
 package com.devyk.kotlin_github.mvp.p
 
-import com.bennyhuo.github.network.entities.User
+import com.devyk.kotlin_github.mvp.m.entity.User
 import com.devyk.kotlin_github.mvp.base.CommonListPresenter
 import com.devyk.kotlin_github.mvp.base.ListPage
 import com.devyk.kotlin_github.mvp.m.PeoplePage

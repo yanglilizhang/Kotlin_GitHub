@@ -1,9 +1,7 @@
 package com.devyk.kotlin_github.mvp.base
 
-import com.bennyhuo.common.log.logger
+import com.devyk.common.ext.logger
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 /**
  * <pre>

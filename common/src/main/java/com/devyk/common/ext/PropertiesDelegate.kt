@@ -14,21 +14,14 @@ import kotlin.reflect.full.isSubclassOf
  *     github  : https://github.com/yangkun19921001
  *     mailbox : yang1001yk@gmail.com
  *     desc    : This is PropertiesDelegate 读取配置文件封装
+ *     desc    : 基于属性代理的 Properties 的扩展
  * </pre>
  */
 class PropertiesDelegate(private val path: String) {
-
-
-
-
-
     /**
      * 利用 lateinit 关键字，允许初始化一个非空属性
      */
     private lateinit var url :URL
-
-
-
 
     /**
      * 将 Properties 对象委托给 properties 属性 ，通过 by lazy 来延迟加载
@@ -39,7 +32,6 @@ class PropertiesDelegate(private val path: String) {
          * run 函数
          */
         url.run {
-
             /**
              * use 是 Closeable 的扩展函数，内部已经调用 try 捕获异常了
              */
@@ -89,7 +81,7 @@ class PropertiesDelegate(private val path: String) {
      * 定义一个抽象管理配置关键
      */
     abstract class AbsProperties(path: String) {
-        protected val PROPERTIES = PropertiesDelegate(path)
+        protected val propertiesDelegate = PropertiesDelegate(path)
     }
 
 }

@@ -1,6 +1,6 @@
 package com.devyk.kotlin_github.mvp.m
 
-import com.bennyhuo.github.network.entities.User
+import com.devyk.kotlin_github.mvp.m.entity.User
 import com.devyk.common.config.UserInfo
 import com.devyk.common.ext.fromJson
 import com.devyk.common.ext.otherwise
@@ -12,9 +12,6 @@ import com.devyk.kotlin_github.mvp.m.entity.AuthorizationReq
 import com.devyk.kotlin_github.mvp.m.entity.AuthorizationRsp
 import com.google.gson.Gson
 import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 
 /**
@@ -74,17 +71,17 @@ object AccountManager {
      * 定义登录接口,V 层调用
      */
     fun login() =
-        AuthService.createAuthorization(AuthorizationReq())
+        AuthService.createAuthorization(AuthorizationReq()) //Observable<AuthorizationRsp>
             .doOnNext {
                 //请求之前判断，也可以进行进度显示
                 it.token.isEmpty().yes {
                     throw AccountException(it)
                 }
-
                 //出现错误会执行此处
-            }.retryWhen {
+            }.retryWhen { it ->
                 it.flatMap {
                     if (it is AccountException) {
+                        //Observable<Response<Any>>
                         AuthService.deleteAuthorization(it.authorizationRsp.id)
                     } else {
                         Observable.error(it)
@@ -93,9 +90,9 @@ object AccountManager {
             }.flatMap {
                 UserInfo.token = it.token
                 UserInfo.authID = it.id
+                //Observable<User>
                 UserService.getAuthenticatedUser()
-            }
-            .map {
+            }.map {
                 currentUser = it
                 notifyLogin(it as User)
                 println("login->$it")
@@ -104,8 +101,8 @@ object AccountManager {
     /**
      * 退出 github
      */
-    fun  logout() =
-        AuthService.deleteAuthorization(UserInfo.authID)
+    fun logout() =
+        AuthService.deleteAuthorization(UserInfo.authID) //Observable<Response<Any>>
             .doOnNext {
                 it.isSuccessful.yes {
                     UserInfo.authID = -1

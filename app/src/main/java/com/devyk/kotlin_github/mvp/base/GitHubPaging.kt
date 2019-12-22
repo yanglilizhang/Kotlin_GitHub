@@ -1,6 +1,6 @@
 package com.devyk.kotlin_github.mvp.base
 
-import com.bennyhuo.common.log.logger
+import com.devyk.common.ext.logger
 import okhttp3.HttpUrl
 
 /**

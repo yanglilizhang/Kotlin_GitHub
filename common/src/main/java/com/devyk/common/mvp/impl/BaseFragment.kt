@@ -9,7 +9,7 @@ import kotlin.reflect.full.primaryConstructor
 import kotlin.reflect.jvm.jvmErasure
 
 abstract class BaseFragment<out P: BasePresenter<BaseFragment<P>>>: IMvpView<P>, Fragment() {
-    override val p: P
+    final override val p: P
 
     init {
         p = createpKt()
@@ -23,7 +23,7 @@ abstract class BaseFragment<out P: BasePresenter<BaseFragment<P>>>: IMvpView<P>,
                 yield(thisClass.supertypes)
                 thisClass = thisClass.supertypes.firstOrNull()?.jvmErasure?: break
             }
-        }.flatMap {
+        }.flatMap { it ->
             it.flatMap { it.arguments }.asSequence()
         }.first {
             it.type?.jvmErasure?.isSubclassOf(IPresenter::class) ?: false

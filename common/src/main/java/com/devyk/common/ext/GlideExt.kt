@@ -6,15 +6,20 @@ import com.bumptech.glide.request.RequestOptions
 import com.devyk.common.weiget.AppCompatAvatarImageView
 
 
-fun AppCompatAvatarImageView.loadWithGlide(url: String, textPlaceHolder: Char, requestOptions: RequestOptions = RequestOptions().diskCacheStrategy(
-    DiskCacheStrategy.RESOURCE)){
+fun AppCompatAvatarImageView.loadWithGlide(
+    url: String,
+    textPlaceHolder: Char,
+    requestOptions: RequestOptions = RequestOptions().diskCacheStrategy(
+        DiskCacheStrategy.RESOURCE
+    )
+) {
     textPlaceHolder.toString().let {
         setTextAndColorSeed(it.toUpperCase(), it.hashCode().toString())
     }
 
-        Glide.with(this)
-            .load(url)
-            .apply(requestOptions)
-            .into(this)
+    Glide.with(this)
+        .load(url)
+        .apply(requestOptions)
+        .into(this)
 
 }

@@ -2,6 +2,7 @@ package com.devyk.kotlin_github.mvp.m.entity
 
 
 import com.devyk.common.anno.PoKo
+import com.devyk.kotlin_github.config.settings.Configs
 
 
 @PoKo

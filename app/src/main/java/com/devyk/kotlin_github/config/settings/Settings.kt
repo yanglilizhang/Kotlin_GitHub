@@ -1,4 +1,5 @@
-
+package com.devyk.kotlin_github.config.settings
+import android.annotation.SuppressLint
 import com.devyk.common.App
 import com.devyk.common.config.UserInfo
 import com.devyk.common.ext.pref
@@ -6,8 +7,10 @@ import com.devyk.kotlin_github.R
 
 
 object Settings {
+
     var lastPage: Int
-        get() = if(lastPageIdString.isEmpty()) 0 else App.getInstance().resources.getIdentifier(lastPageIdString, "id", App.getInstance().packageName)
+        get() = if(lastPageIdString.isEmpty()) 0 else App.getInstance().resources.getIdentifier(
+            lastPageIdString, "id", App.getInstance().packageName)
         set(value) {
             lastPageIdString = App.getInstance().resources.getResourceEntryName(value)
         }

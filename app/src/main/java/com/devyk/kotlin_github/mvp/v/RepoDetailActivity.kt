@@ -1,9 +1,8 @@
 package com.devyk.kotlin_github.mvp.v
 
 import SubscriptionResponse
-import android.app.Activity
 import android.os.Bundle
-import com.bennyhuo.common.log.logger
+import com.devyk.common.ext.logger
 import com.devyk.common.ext.*
 import com.devyk.common.utils.githubTimeToDate
 import com.devyk.common.utils.view
@@ -17,12 +16,7 @@ import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_repo_details.*
 import kotlinx.android.synthetic.main.app_bar_details.*
 import kotlinx.android.synthetic.main.item_repo.avatarView
-import kotlinx.coroutines.*
-import org.reactivestreams.Subscriber
-import org.reactivestreams.Subscription
 import retrofit2.Response
-import java.lang.Exception
-import java.util.*
 
 /**
  * <pre>

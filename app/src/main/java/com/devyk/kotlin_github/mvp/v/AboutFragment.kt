@@ -9,11 +9,8 @@ import android.view.ViewGroup
 import com.devyk.common.ext.markdownText
 import com.devyk.kotlin_github.R
 import com.devyk.kotlin_github.mvp.base.CommonSinglePageFragment
-import kotlinx.android.synthetic.main.activity_repo_details.view.*
 import org.jetbrains.anko.*
-import org.jetbrains.anko.support.v4.UI
 import org.jetbrains.anko.support.v4.nestedScrollView
-import kotlin.reflect.jvm.internal.impl.builtins.jvm.JvmBuiltInClassDescriptorFactory
 
 
 /**

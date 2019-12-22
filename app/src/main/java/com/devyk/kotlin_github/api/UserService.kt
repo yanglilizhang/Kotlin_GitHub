@@ -1,6 +1,6 @@
 package com.devyk.kotlin_github.api
 
-import com.bennyhuo.github.network.entities.User
+import com.devyk.kotlin_github.mvp.m.entity.User
 import com.devyk.common.network.RETROFIT
 import com.devyk.kotlin_github.mvp.base.GitHubPaging
 import io.reactivex.Observable
@@ -22,7 +22,6 @@ interface UserApi {
     @GET("/users/{login}/followers")
     fun followers(@Path("login") login: String, @Query("page") page: Int = 1): Observable<GitHubPaging<User>>
 
-
 }
 
-object UserService: UserApi by RETROFIT.create(UserApi::class.java)
+object UserService : UserApi by RETROFIT.create(UserApi::class.java)

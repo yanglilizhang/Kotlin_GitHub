@@ -7,6 +7,27 @@ import kotlin.reflect.KClass
 import kotlin.reflect.full.isSubclassOf
 import kotlin.reflect.full.primaryConstructor
 import kotlin.reflect.jvm.jvmErasure
+//class A{
+//    open val a: String= ""
+//    open val b: String= ""
+//    // 没有open关键字无法被其子类重写
+//    val c: String= ""
+//    open fun function(){
+//
+//    }
+//}
+
+
+//class B : A{
+//    // 注意：如果想要类B内的父类属性不可以被其子类所重写，需要标注上final关键字
+//// 没加final可以被其子类重写
+//    override val a: String= ""
+//    // 有加final不可以被其子类重写
+//    final override val b: String= ""
+//    final override fun function(){
+//
+//    }
+//}
 
 abstract class BaseActivity<out P : BasePresenter<BaseActivity<P>>> : AppCompatActivity(), IMvpView<P> {
 
@@ -26,7 +47,7 @@ abstract class BaseActivity<out P : BasePresenter<BaseActivity<P>>> : AppCompatA
                 yield(thisClass.supertypes)
                 thisClass = thisClass.supertypes.firstOrNull()?.jvmErasure ?: break
             }
-        }.flatMap {
+        }.flatMap { it ->
             it.flatMap { it.arguments }.asSequence()
         }.first {
                     it.type?.jvmErasure?.isSubclassOf(IPresenter::class) ?: false
@@ -98,3 +119,5 @@ abstract class BaseActivity<out P : BasePresenter<BaseActivity<P>>> : AppCompatA
 
 
 }
+
+

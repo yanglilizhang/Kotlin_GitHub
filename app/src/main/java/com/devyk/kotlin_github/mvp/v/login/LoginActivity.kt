@@ -6,7 +6,7 @@ import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import com.bennyhuo.common.ext.hideSoftInput
+import com.devyk.common.ext.hideSoftInput
 import com.devyk.common.config.UserInfo
 import com.devyk.common.ext.otherwise
 import com.devyk.common.ext.yes
@@ -62,7 +62,6 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
     override fun onRequest() {
         toast("开始登录")
         showProgress(true)
-
     }
 
     override fun onSuccess() {

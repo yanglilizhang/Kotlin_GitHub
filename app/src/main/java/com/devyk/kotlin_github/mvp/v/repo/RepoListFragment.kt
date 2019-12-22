@@ -1,6 +1,6 @@
 package com.devyk.kotlin_github.mvp.v.repo
 
-import com.bennyhuo.github.network.entities.User
+import com.devyk.kotlin_github.mvp.m.entity.User
 import com.devyk.common.ext.bindArgument
 import com.devyk.kotlin_github.adapter.RepoListAdapter
 import com.devyk.kotlin_github.mvp.base.CommonListFragment
@@ -18,7 +18,7 @@ import com.devyk.kotlin_github.mvp.p.RepoListPresenter
  */
 class RepoListFragment : CommonListFragment<Repository, RepoListPresenter>() {
 
-    val user: User  by bindArgument("user")
+    val user: User by bindArgument("user")
 
     override val adapter = RepoListAdapter()
 

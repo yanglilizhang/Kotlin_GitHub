@@ -1,4 +1,4 @@
-package com.bennyhuo.common.log
+package com.devyk.common.ext
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

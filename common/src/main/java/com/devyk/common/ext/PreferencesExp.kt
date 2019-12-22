@@ -11,13 +11,16 @@ import kotlin.reflect.KProperty
  *     blog    : https://juejin.im/user/578259398ac2470061f3a3fb/posts
  *     github  : https://github.com/yangkun19921001
  *     mailbox : yang1001yk@gmail.com
- *     desc    : This is PreferencesExp  SharedpreFerences  扩展
+ *     desc    : 基于属性代理的 SharedPreferences 和 Properties 的扩展
  * </pre>
  */
-
-class Preference<T>(var context: Context, val name: String, val default: T, val prefName: String = "defaut") :
+class Preference<T>(
+    var context: Context,
+    val name: String,
+    private val default: T,
+    private val prefName: String = "defaut"
+) :
     ReadWriteProperty<Any?, T> {
-
 
     /**
      * lazy 变量委托
@@ -35,7 +38,7 @@ class Preference<T>(var context: Context, val name: String, val default: T, val 
      * 根据 default 来判断存入的类型
      */
     private fun findPreference(key: String): T {
-        return when (default) {
+        return when (this.default) {
             is Long -> prefs.getLong(key, default)
             is Int -> prefs.getInt(key, default)
             is Boolean -> prefs.getBoolean(key, default)
@@ -47,7 +50,8 @@ class Preference<T>(var context: Context, val name: String, val default: T, val 
     /**
      * find 查询名称
      */
-    private fun findProperName(property: KProperty<*>): String = if (name.isEmpty()) property.name else name
+    private fun findProperName(property: KProperty<*>): String =
+        if (name.isEmpty()) property.name else name
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
         putPreference(findProperName(property), value);

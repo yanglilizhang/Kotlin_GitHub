@@ -1,4 +1,4 @@
-package com.bennyhuo.github.network.entities
+package com.devyk.kotlin_github.mvp.m.entity
 
 import android.os.Parcelable
 import com.devyk.common.anno.PoKo

@@ -1,4 +1,4 @@
-package com.bennyhuo.common.ext
+package com.devyk.common.ext
 
 import android.app.Activity
 import android.content.Context

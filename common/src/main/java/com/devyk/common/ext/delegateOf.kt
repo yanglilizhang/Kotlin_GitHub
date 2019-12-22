@@ -4,7 +4,10 @@ import kotlin.jvm.internal.PropertyReference
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.*
 
-fun <T> delegateOf(setter: ((T) -> Unit)? = null, defaultValue: T? = null): ReadWriteProperty<Any, T> =
+fun <T> delegateOf(
+    setter: ((T) -> Unit)? = null,
+    defaultValue: T? = null
+): ReadWriteProperty<Any, T> =
     ObjectPropertyDelegateNoGetter0(setter, defaultValue)
 
 fun <T> delegateOf(
@@ -29,7 +32,10 @@ fun <T, R> delegateWithReceiverOf(
 fun <T> KProperty0<T>.delegator(defaultValue: T? = null): ReadWriteProperty<Any, T> =
     ObjectPropertyDelegate0(propertyRef = this as PropertyReference, defaultValue = defaultValue)
 
-fun <T, R> KProperty1<R, T>.delegator(receiver: R, defaultValue: T? = null): ReadWriteProperty<Any, T> =
+fun <T, R> KProperty1<R, T>.delegator(
+    receiver: R,
+    defaultValue: T? = null
+): ReadWriteProperty<Any, T> =
     ObjectPropertyDelegate1(receiver, property = this, defaultValue = defaultValue)
 
 @JvmName("delegatorGetter")
@@ -37,16 +43,25 @@ fun <T> KFunction0<T>.delegator(defaultValue: T? = null): ReadWriteProperty<Any,
     ObjectPropertyDelegate0(this, defaultValue = defaultValue)
 
 @JvmName("delegatorGetter")
-fun <T, R> KFunction1<R, T>.delegator(receiver: R, defaultValue: T? = null): ReadWriteProperty<Any, T> =
+fun <T, R> KFunction1<R, T>.delegator(
+    receiver: R,
+    defaultValue: T? = null
+): ReadWriteProperty<Any, T> =
     ObjectPropertyDelegate1(receiver, this, defaultValue = defaultValue)
 
 fun <T> KFunction1<T, Unit>.delegator(defaultValue: T? = null): ReadWriteProperty<Any, T> =
     ObjectPropertyDelegateNoGetter0(setter = this, defaultValue = defaultValue)
 
-fun <T, R> KFunction2<R, T, Unit>.delegator(receiver: R, defaultValue: T? = null): ReadWriteProperty<Any, T> =
+fun <T, R> KFunction2<R, T, Unit>.delegator(
+    receiver: R,
+    defaultValue: T? = null
+): ReadWriteProperty<Any, T> =
     ObjectPropertyDelegateNoGetter1(receiver, setter = this, defaultValue = defaultValue)
 
-private class ObjectPropertyDelegateNoGetter0<T>(val setter: ((T) -> Unit)? = null, defaultValue: T? = null) :
+private class ObjectPropertyDelegateNoGetter0<T>(
+    val setter: ((T) -> Unit)? = null,
+    defaultValue: T? = null
+) :
     ReadWriteProperty<Any, T> {
     private var value: T? = defaultValue
 

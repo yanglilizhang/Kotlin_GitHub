@@ -1,5 +1,7 @@
 package com.devyk.common.ext
 
+import kotlin.math.roundToInt
+
 /**
  * <pre>
  *     author  : devyk on 2019-11-05 13:57
@@ -11,8 +13,15 @@ package com.devyk.common.ext
  */
 fun Int.toKilo(): String{
     return if(this > 700){
-        "${(Math.round(this / 100f) / 10f)}k"
+        "${((this / 100f).roundToInt() / 10f)}k"
     }else{
         "$this"
     }
+
+
+//    return if(this > 700){
+//        "${(Math.round(this / 100f) / 10f)}k"
+//    }else{
+//        "$this"
+//    }
 }

@@ -1,7 +1,6 @@
 package com.devyk.kotlin_github.mvp.m.entity
 
 import android.os.Parcelable
-import com.bennyhuo.github.network.entities.BasicUser
 import com.devyk.common.anno.PoKo
 import kotlinx.android.parcel.Parcelize
 import java.security.Permissions

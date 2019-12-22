@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
-import com.bennyhuo.common.log.logger
-import com.bennyhuo.github.network.entities.User
-import com.bennyhuo.github.view.widget.ActionBarController
+import com.devyk.common.ext.logger
+import com.devyk.kotlin_github.mvp.m.entity.User
+import com.devyk.kotlin_github.widget.ActionBarController
 import com.devyk.common.config.UserInfo
 import com.devyk.common.ext.*
 import com.devyk.kotlin_github.R
@@ -32,17 +32,12 @@ import org.jetbrains.anko.toast
  * 主页面
  */
 class MainActivity : BaseActivity<MainPersenter>(), OnAccountStateChangeLister {
-
-
     /**
      * 初始化 actionBar
      */
     val actionBarController by lazy {
         ActionBarController(this)
     }
-
-
-
 
     /**
      * 初始化 抽屉
@@ -75,7 +70,6 @@ class MainActivity : BaseActivity<MainPersenter>(), OnAccountStateChangeLister {
     }
 
     private fun initNavigationView() {
-
         UserInfo.isLoginIn().yes {
             navigationController.useLoginLayout()
         }.otherwise {
@@ -105,11 +99,9 @@ class MainActivity : BaseActivity<MainPersenter>(), OnAccountStateChangeLister {
             MainScope().launch() {
                 if (confirm("提醒", "是否确认退出？")) {
                     p.logout()
-
                 }else{
                     toast("取消！")
                 }
-
             }
         }
 

@@ -1,6 +1,7 @@
 package com.devyk.kotlin_github.mvp.p
 
 import BasePresenter
+import android.annotation.SuppressLint
 import com.devyk.common.config.UserInfo
 import com.devyk.kotlin_github.mvp.m.AccountManager
 import com.devyk.kotlin_github.mvp.v.login.LoginActivity
@@ -33,16 +34,14 @@ class LoginPresenter : BasePresenter<LoginActivity>() {
             )
     }
 
-    fun checkUser(name: String, pwd:String):Boolean{
+    fun checkUser(name: String, pwd: String): Boolean {
         return true
     }
-
 
 
     //进行用户信息重绘
     override fun onResume() {
         super.onResume()
-            v.onDataInit(UserInfo.username,UserInfo.password)
-
+        v.onDataInit(UserInfo.username, UserInfo.password)
     }
 }

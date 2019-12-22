@@ -2,13 +2,14 @@ package com.devyk.kotlin_github.widget
 
 import android.support.design.widget.NavigationView
 import android.view.MenuItem
-import com.bennyhuo.common.log.logger
-import com.bennyhuo.github.network.entities.User
+import com.devyk.common.ext.logger
+import com.devyk.kotlin_github.mvp.m.entity.User
 import com.devyk.common.ext.loadWithGlide
 import com.devyk.kotlin_github.R
 import com.devyk.kotlin_github.config.NavViewItem
 import com.devyk.kotlin_github.config.doOnLayoutAvailable
 import com.devyk.kotlin_github.config.selectItem
+import com.devyk.kotlin_github.config.settings.Settings
 import com.devyk.kotlin_github.mvp.m.AccountManager
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.jetbrains.anko.imageResource

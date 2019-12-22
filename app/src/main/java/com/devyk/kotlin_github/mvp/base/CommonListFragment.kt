@@ -24,7 +24,8 @@ import org.jetbrains.anko.support.v4.toast
  *     desc    : This is CommonListFragment
  * </pre>
  */
-abstract class CommonListFragment<DataType, out Presenter : CommonListPresenter<DataType, CommonListFragment<DataType, Presenter>>> :
+abstract class CommonListFragment<DataType, out Presenter :
+CommonListPresenter<DataType, CommonListFragment<DataType, Presenter>>> :
     BaseFragment<Presenter>() {
 
     /**
@@ -36,7 +37,11 @@ abstract class CommonListFragment<DataType, out Presenter : CommonListPresenter<
         ErrorInfoView(rootView)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_common_list, container, false)
     }
 
@@ -50,7 +55,8 @@ abstract class CommonListFragment<DataType, out Presenter : CommonListPresenter<
         )
         recyclerView.adapter = LuRecyclerViewAdapter(adapter)
         recyclerView.setLoadMoreEnabled(true)
-        recyclerView.layoutManager = LinearLayoutManager(view?.context, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(view?.context, LinearLayoutManager.VERTICAL, false)
         recyclerView.itemAnimator = DefaultItemAnimator()
 
         refreshView.isRefreshing = true
@@ -64,7 +70,6 @@ abstract class CommonListFragment<DataType, out Presenter : CommonListPresenter<
     fun setLoadMoreEnable(isEnable: Boolean) {
         recyclerView.setLoadMoreEnabled(isEnable)
     }
-
 
 
     override fun onRequest() {
@@ -93,13 +98,10 @@ abstract class CommonListFragment<DataType, out Presenter : CommonListPresenter<
 
     private fun dismissError() {
         errorInfoView.dismiss()
-
     }
 
     fun onDataInitWithError(error: String) {
         showError("访问出错：$error")
-
-
     }
 
     fun onDataRefreshWithNothing() {

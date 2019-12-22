@@ -27,6 +27,7 @@ import org.jetbrains.anko.newTask
 class RepoListAdapter() : CommonListAdapter<Repository>(R.layout.item_repo) {
     override fun onBindData(viewHolder: RecyclerView.ViewHolder, repository: Repository) {
         viewHolder.itemView.apply {
+            //apply 返回传入对象的本身
             avatarView.loadWithGlide(repository.owner.avatar_url, repository.owner.login.first())
             repoNameView.text = repository.name
             descriptionView.text = repository.description

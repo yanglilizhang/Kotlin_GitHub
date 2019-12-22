@@ -28,8 +28,9 @@ class GitHubApp : Application(){
         lateinit var instance: GitHubApp;
 
     }
-
-
+//https://github.com/liuhuiAndroid/github-app
+//    https://github.com/search?q=com.bennyhuo.common.ext
+//https://github.com/cl9211/GitHubDemo
     /**
      * 重写 Application onCreate 生命周期函数
      */

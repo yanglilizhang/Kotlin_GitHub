@@ -1,10 +1,8 @@
 package com.devyk.kotlin_github.mvp.p
 
 import BasePresenter
-import com.bennyhuo.common.log.logger
 import com.devyk.kotlin_github.mvp.m.AccountManager
 import com.devyk.kotlin_github.mvp.v.MainActivity
-import org.jetbrains.anko.toast
 
 /**
  * <pre>

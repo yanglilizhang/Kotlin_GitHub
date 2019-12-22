@@ -12,3 +12,5 @@ interface IMvpView<out Presenter : IPresenter<IMvpView<Presenter>>> : ILifecycle
 
     fun onError(error: Throwable)
 }
+
+

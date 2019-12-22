@@ -17,8 +17,8 @@ class UserConfig(path: String) : PropertiesDelegate.AbsProperties(path) {
      * 将接口的实现委托给另一个对象
      * 将属性访问器的实现委托给另一个对象
      */
-    var name: String by PROPERTIES
-    var email: String by PROPERTIES
+    var name: String by propertiesDelegate
+    var email: String by propertiesDelegate
 
 
     fun config(

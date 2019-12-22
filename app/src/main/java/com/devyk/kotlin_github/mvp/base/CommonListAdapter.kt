@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.item_card.view.*
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.sdk15.coroutines.onClick
 
-abstract class CommonListAdapter<T>(@LayoutRes val itemResId: Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+abstract class CommonListAdapter<T>(@LayoutRes val itemResId: Int) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         private const val CARD_TAP_DURATION = 100L
     }
@@ -32,7 +33,8 @@ abstract class CommonListAdapter<T>(@LayoutRes val itemResId: Int) : RecyclerVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
         LayoutInflater.from(itemView.context).inflate(itemResId, itemView.contentContainer)
         return CommonViewHolder(itemView)
     }
@@ -46,10 +48,13 @@ abstract class CommonListAdapter<T>(@LayoutRes val itemResId: Int) : RecyclerVie
 
         holder.itemView.setOnTouchListener { _, event ->
             when (event.action) {
-                MotionEvent.ACTION_DOWN -> ViewCompat.animate(holder.itemView).scaleX(1.03f).scaleY(1.03f).translationZ(holder.itemView.dip(10).toFloat()).duration = CARD_TAP_DURATION
+                MotionEvent.ACTION_DOWN -> ViewCompat.animate(holder.itemView).scaleX(1.03f)
+                    .scaleY(1.03f).translationZ(holder.itemView.dip(10).toFloat()).duration =
+                    CARD_TAP_DURATION
                 MotionEvent.ACTION_UP,
                 MotionEvent.ACTION_CANCEL -> {
-                    ViewCompat.animate(holder.itemView).scaleX(1f).scaleY(1f).translationZ(holder.itemView.dip(0).toFloat()).duration = CARD_TAP_DURATION
+                    ViewCompat.animate(holder.itemView).scaleX(1f).scaleY(1f)
+                        .translationZ(holder.itemView.dip(0).toFloat()).duration = CARD_TAP_DURATION
                 }
             }
             false
@@ -61,7 +66,7 @@ abstract class CommonListAdapter<T>(@LayoutRes val itemResId: Int) : RecyclerVie
     }
 
     override fun onViewAttachedToWindow(holder: ViewHolder) {
-        if(holder is CommonViewHolder && holder.layoutPosition > oldPosition){
+        if (holder is CommonViewHolder && holder.layoutPosition > oldPosition) {
             addItemAnimation(holder.itemView)
             oldPosition = holder.layoutPosition
         }
@@ -75,5 +80,5 @@ abstract class CommonListAdapter<T>(@LayoutRes val itemResId: Int) : RecyclerVie
 
     abstract fun onItemClicked(itemView: View, item: T)
 
-    class CommonViewHolder(itemView: View): ViewHolder(itemView)
+    class CommonViewHolder(itemView: View) : ViewHolder(itemView)
 }

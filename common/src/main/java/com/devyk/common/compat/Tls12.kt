@@ -1,4 +1,4 @@
-package com.bennyhuo.github.network.compat
+package com.devyk.common.compat
 
 import android.os.Build
 import android.util.Log

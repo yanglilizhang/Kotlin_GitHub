@@ -15,8 +15,8 @@ import org.reactivestreams.Subscription
  *     desc    : This is CommonListPresenter
  * </pre>
  */
-abstract class CommonListPresenter<DataType, out View : CommonListFragment<DataType, CommonListPresenter<DataType, View>>> :
-    BasePresenter<View>() {
+abstract class CommonListPresenter<DataType, out View :
+CommonListFragment<DataType, CommonListPresenter<DataType, View>>> : BasePresenter<View>() {
     abstract val listPage: ListPage<DataType>
 
     private var firstInView = true

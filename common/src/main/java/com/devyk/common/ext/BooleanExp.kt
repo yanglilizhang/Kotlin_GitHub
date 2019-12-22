@@ -47,7 +47,7 @@ inline fun <T> Boolean.no(block: () -> T) =
 
 inline fun <T> BooleanExp<T>.otherwise(block: () -> T): T =
     when (this) {
-        is Otherwise -> block();
+        is Otherwise -> block()
         is WithData -> this.data
 
     }

@@ -7,25 +7,32 @@ import okhttp3.Interceptor
 import okhttp3.Interceptor.Chain
 import okhttp3.Response
 
-class AuthInterceptor: Interceptor{
+class AuthInterceptor : Interceptor {
     override fun intercept(chain: Chain): Response {
+        //Request request();
         val original = chain.request()
+        //Response proceed(Request request) throws IOException;
         return chain.proceed(original.newBuilder()
-                .apply {
-                    when{
-                        original.url().pathSegments().contains("authorizations") ->{
-                            val userCredentials = UserInfo.username + ":" + UserInfo.password
-                            val auth = "Basic " + String(Base64.encode(userCredentials.toByteArray(), Base64.DEFAULT)).trim()
-                            header("Authorization", auth)
-                        }
-                        UserInfo.isLoginIn() -> {
-                            val auth = "Token " + UserInfo.token
-                            header("Authorization", auth)
-                        }
-                        else -> removeHeader("Authorization")
+            .apply {
+                when {
+                    original.url().pathSegments().contains("authorizations") -> {
+                        val userCredentials = UserInfo.username + ":" + UserInfo.password
+                        val auth = "Basic " + String(
+                            Base64.encode(
+                                userCredentials.toByteArray(),
+                                Base64.DEFAULT
+                            )
+                        ).trim()
+                        header("Authorization", auth)
                     }
+                    UserInfo.isLoginIn() -> {
+                        val auth = "Token " + UserInfo.token
+                        header("Authorization", auth)
+                    }
+                    else -> removeHeader("Authorization")
                 }
-                .build())
+            }
+            .build())
         return chain.proceed(chain.request())
     }
 }

@@ -1,8 +1,6 @@
 package com.devyk.kotlin_github.mvp.m
 
-import com.bennyhuo.github.network.entities.User
-import com.devyk.common.ext.otherwise
-import com.devyk.common.ext.yes
+import com.devyk.kotlin_github.mvp.m.entity.User
 import com.devyk.common.utils.format
 import com.devyk.kotlin_github.api.RepositoryService
 import com.devyk.kotlin_github.mvp.base.GitHubPaging
